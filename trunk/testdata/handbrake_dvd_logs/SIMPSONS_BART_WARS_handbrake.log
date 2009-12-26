@@ -1,0 +1,124 @@
+HandBrake 0.9.3 (2008112300) - http://handbrake.fr/
+2 CPUs detected
+Opening SIMPSONS_BART_WARS...
+Scanning title 1 of 10...
+Scanning title 1 of 10...
+Scanning title 2 of 10...
+Scanning title 3 of 10...
+Scanning title 3 of 10...
+Scanning title 4 of 10...
+Scanning title 4 of 10...
+Scanning title 5 of 10...
+Scanning title 6 of 10...
+Scanning title 6 of 10...
++ title 1:
+  + vts 4, ttn 1, cells 0->7 (555408 blocks)
+  + duration: 00:22:47
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/4/8
+  + chapters:
+    + 1: cells 0->0, 32909 blocks, duration 00:01:22
+    + 2: cells 1->1, 128564 blocks, duration 00:05:16
+    + 3: cells 2->2, 76821 blocks, duration 00:03:03
+    + 4: cells 3->3, 142908 blocks, duration 00:05:57
+    + 5: cells 4->5, 144983 blocks, duration 00:05:55
+    + 6: cells 6->6, 29218 blocks, duration 00:01:14
+    + 7: cells 7->7, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 2, Francais (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 3, Espanol (AC3) (Dolby Surround), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Francais (iso639-2: fra)
+    + 4, Espanol (iso639-2: spa)
++ title 2:
+  + vts 4, ttn 2, cells 0->6 (526937 blocks)
+  + duration: 00:22:44
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/8/8
+  + chapters:
+    + 1: cells 0->0, 11769 blocks, duration 00:00:30
+    + 2: cells 1->1, 143680 blocks, duration 00:06:14
+    + 3: cells 2->2, 114032 blocks, duration 00:04:54
+    + 4: cells 3->3, 70380 blocks, duration 00:02:57
+    + 5: cells 4->4, 167830 blocks, duration 00:07:20
+    + 6: cells 5->5, 19241 blocks, duration 00:00:49
+    + 7: cells 6->6, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 2, Francais (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 3, Espanol (AC3) (Dolby Surround), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Francais (iso639-2: fra)
+    + 4, Espanol (iso639-2: spa)
++ title 3:
+  + vts 4, ttn 3, cells 0->6 (531002 blocks)
+  + duration: 00:22:46
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/4/6
+  + chapters:
+    + 1: cells 0->0, 9461 blocks, duration 00:00:25
+    + 2: cells 1->1, 133083 blocks, duration 00:05:37
+    + 3: cells 2->2, 50089 blocks, duration 00:02:13
+    + 4: cells 3->3, 161385 blocks, duration 00:06:51
+    + 5: cells 4->4, 158150 blocks, duration 00:06:50
+    + 6: cells 5->5, 18829 blocks, duration 00:00:50
+    + 7: cells 6->6, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 2, Francais (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 3, Espanol (AC3) (Dolby Surround), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Francais (iso639-2: fra)
+    + 4, Espanol (iso639-2: spa)
++ title 4:
+  + vts 4, ttn 4, cells 0->7 (522328 blocks)
+  + duration: 00:22:50
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 1: cells 0->0, 30100 blocks, duration 00:01:22
+    + 2: cells 1->1, 61415 blocks, duration 00:02:54
+    + 3: cells 2->2, 83596 blocks, duration 00:03:28
+    + 4: cells 3->3, 142944 blocks, duration 00:06:03
+    + 5: cells 4->5, 191011 blocks, duration 00:08:09
+    + 6: cells 6->6, 13257 blocks, duration 00:00:54
+    + 7: cells 7->7, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 2, Francais (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 3, Espanol (AC3) (Dolby Surround), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Francais (iso639-2: fra)
+    + 4, Espanol (iso639-2: spa)
++ title 5:
+  + vts 6, ttn 1, cells 0->1 (140461 blocks)
+  + duration: 00:07:45
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 0/2/2/8
+  + chapters:
+    + 1: cells 0->0, 140456 blocks, duration 00:07:45
+    + 2: cells 1->1, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+  + combing detected, may be interlaced or telecined
++ title 6:
+  + vts 5, ttn 1, cells 0->2 (436464 blocks)
+  + duration: 00:06:20
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 2: cells 0->2, 436464 blocks, duration 00:06:20
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+HandBrake has exited.

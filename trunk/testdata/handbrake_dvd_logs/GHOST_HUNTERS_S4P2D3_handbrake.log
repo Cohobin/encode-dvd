@@ -1,0 +1,147 @@
+HandBrake 0.9.3 (2008112300) - http://handbrake.fr/
+2 CPUs detected
+Opening GHOST_HUNTERS_S4P2D3...
+Scanning title 2 of 4...
+Scanning title 2 of 4...
+Scanning title 3 of 4...
+Scanning title 4 of 4...
+Scanning title 4 of 4...
++ title 1:
+  + vts 1, ttn 1, cells 0->1 (7938 blocks)
+  + duration: 00:00:29
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 1: cells 0->0, 1945 blocks, duration 00:00:10
+    + 2: cells 1->1, 5993 blocks, duration 00:00:19
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (iso639-2: eng)
++ title 2:
+  + vts 1, ttn 2, cells 0->41 (3389527 blocks)
+  + duration: 02:54:30
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 2: cells 0->0, 16593 blocks, duration 00:00:49
+    + 3: cells 1->1, 33951 blocks, duration 00:01:28
+    + 4: cells 2->2, 103218 blocks, duration 00:05:14
+    + 5: cells 3->3, 104776 blocks, duration 00:05:17
+    + 6: cells 4->4, 90615 blocks, duration 00:04:25
+    + 7: cells 5->5, 16929 blocks, duration 00:00:59
+    + 8: cells 6->6, 84377 blocks, duration 00:04:33
+    + 9: cells 7->7, 19798 blocks, duration 00:00:52
+    + 10: cells 8->8, 71724 blocks, duration 00:03:35
+    + 11: cells 9->9, 166646 blocks, duration 00:08:44
+    + 12: cells 10->10, 27396 blocks, duration 00:01:21
+    + 13: cells 11->11, 111051 blocks, duration 00:06:19
+    + 14: cells 12->12, 18316 blocks, duration 00:00:52
+    + 15: cells 13->13, 65288 blocks, duration 00:02:58
+    + 16: cells 14->14, 155553 blocks, duration 00:07:22
+    + 17: cells 15->15, 148371 blocks, duration 00:07:31
+    + 18: cells 16->16, 100112 blocks, duration 00:05:07
+    + 19: cells 17->17, 116451 blocks, duration 00:06:20
+    + 20: cells 18->18, 69971 blocks, duration 00:03:24
+    + 21: cells 19->19, 33977 blocks, duration 00:02:06
+    + 22: cells 20->20, 139512 blocks, duration 00:07:57
+    + 23: cells 21->21, 15541 blocks, duration 00:00:46
+    + 24: cells 22->22, 26509 blocks, duration 00:01:17
+    + 25: cells 23->23, 135307 blocks, duration 00:07:29
+    + 26: cells 24->24, 81845 blocks, duration 00:04:28
+    + 27: cells 25->25, 22685 blocks, duration 00:01:09
+    + 28: cells 26->26, 31395 blocks, duration 00:01:38
+    + 29: cells 27->27, 29844 blocks, duration 00:01:38
+    + 30: cells 28->28, 76327 blocks, duration 00:04:17
+    + 31: cells 29->29, 33128 blocks, duration 00:01:30
+    + 32: cells 30->30, 12728 blocks, duration 00:00:34
+    + 33: cells 31->31, 124997 blocks, duration 00:05:59
+    + 34: cells 32->32, 139196 blocks, duration 00:06:49
+    + 35: cells 33->33, 18824 blocks, duration 00:01:03
+    + 36: cells 34->34, 99384 blocks, duration 00:04:57
+    + 37: cells 35->35, 15383 blocks, duration 00:00:47
+    + 38: cells 36->36, 162677 blocks, duration 00:08:38
+    + 39: cells 37->37, 127219 blocks, duration 00:06:27
+    + 40: cells 38->38, 135534 blocks, duration 00:06:54
+    + 41: cells 39->39, 134152 blocks, duration 00:06:56
+    + 42: cells 40->40, 168049 blocks, duration 00:08:11
+    + 43: cells 41->41, 104178 blocks, duration 00:05:44
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (iso639-2: eng)
++ title 3:
+  + vts 1, ttn 3, cells 0->11 (847074 blocks)
+  + duration: 00:43:37
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 2: cells 0->0, 16593 blocks, duration 00:00:14
+    + 3: cells 1->1, 33951 blocks, duration 00:00:26
+    + 4: cells 2->2, 103218 blocks, duration 00:01:32
+    + 5: cells 3->3, 104776 blocks, duration 00:01:33
+    + 6: cells 4->4, 90615 blocks, duration 00:01:18
+    + 7: cells 5->5, 16929 blocks, duration 00:00:17
+    + 8: cells 6->6, 84377 blocks, duration 00:01:20
+    + 9: cells 7->7, 19798 blocks, duration 00:00:15
+    + 10: cells 8->8, 71724 blocks, duration 00:01:03
+    + 11: cells 9->9, 166646 blocks, duration 00:02:34
+    + 12: cells 10->10, 27396 blocks, duration 00:00:24
+    + 14: cells 0->0, 16593 blocks, duration 00:00:14
+    + 15: cells 1->1, 33951 blocks, duration 00:00:26
+    + 16: cells 2->2, 103218 blocks, duration 00:01:32
+    + 17: cells 3->3, 104776 blocks, duration 00:01:33
+    + 18: cells 4->4, 90615 blocks, duration 00:01:18
+    + 19: cells 5->5, 16929 blocks, duration 00:00:17
+    + 20: cells 6->6, 84377 blocks, duration 00:01:20
+    + 21: cells 7->7, 19798 blocks, duration 00:00:15
+    + 23: cells 0->0, 16593 blocks, duration 00:00:14
+    + 24: cells 1->1, 33951 blocks, duration 00:00:26
+    + 25: cells 2->2, 103218 blocks, duration 00:01:32
+    + 26: cells 3->3, 104776 blocks, duration 00:01:33
+    + 27: cells 4->4, 90615 blocks, duration 00:01:18
+    + 28: cells 5->5, 16929 blocks, duration 00:00:17
+    + 29: cells 6->6, 84377 blocks, duration 00:01:20
+    + 30: cells 7->7, 19798 blocks, duration 00:00:15
+    + 31: cells 8->8, 71724 blocks, duration 00:01:03
+    + 32: cells 9->9, 166646 blocks, duration 00:02:34
+    + 33: cells 10->10, 27396 blocks, duration 00:00:24
+    + 34: cells 11->11, 111051 blocks, duration 00:01:52
+    + 35: cells 12->12, 33554376 blocks, duration 00:00:00
+    + 37: cells 0->0, 16593 blocks, duration 00:00:14
+    + 38: cells 1->1, 33951 blocks, duration 00:00:26
+    + 39: cells 2->2, 103218 blocks, duration 00:01:32
+    + 40: cells 3->3, 104776 blocks, duration 00:01:33
+    + 41: cells 4->4, 90615 blocks, duration 00:01:18
+    + 42: cells 5->5, 16929 blocks, duration 00:00:17
+    + 43: cells 6->11, 480992 blocks, duration 00:07:29
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (iso639-2: eng)
++ title 4:
+  + vts 1, ttn 4, cells 0->0 (12608 blocks)
+  + duration: 00:00:39
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/28/0/0
+  + chapters:
+    + 6: cells 0->0, 12608 blocks, duration 00:00:00
+    + 7: cells 1->1, -16744484 blocks, duration 00:00:00
+    + 8: cells 2->2, -1073742112 blocks, duration 00:00:00
+    + 9: cells 3->3, -2147483647 blocks, duration 00:00:19
+    + 10: cells 4->4, 1 blocks, duration 00:00:00
+    + 18: cells 0->0, 12608 blocks, duration 00:00:00
+    + 19: cells 1->1, -16744484 blocks, duration 00:00:00
+    + 20: cells 2->2, -1073742112 blocks, duration 00:00:00
+    + 21: cells 3->3, -2147483647 blocks, duration 00:00:19
+    + 28: cells 0->0, 12608 blocks, duration 00:00:00
+    + 29: cells 1->1, -16744484 blocks, duration 00:00:00
+    + 30: cells 2->2, -1073742112 blocks, duration 00:00:00
+    + 36: cells 0->0, 12608 blocks, duration 00:00:00
+    + 37: cells 1->1, -16744484 blocks, duration 00:00:00
+    + 41: cells 0->0, 12608 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (iso639-2: eng)
+HandBrake has exited.
