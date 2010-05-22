@@ -376,7 +376,7 @@ class EncodeDvdInitalizeFullLoggingTest(BaseEncodeDvdTest):
     self.mock_log_file = self.mox.CreateMockAnything()
     self.real_modules = sys.modules['__builtin__'].file
     sys.modules['__builtin__'].file = self.mox.CreateMockAnything()
-    self.encode._log_full_index = []
+    self.encode._log_full_index = {}
     self.encode._log = self.mox.CreateMockAnything()
 
   def tearDown(self):
@@ -402,7 +402,7 @@ class EncodeDvdInitalizeFullLoggingTest(BaseEncodeDvdTest):
     self.mock_log_file.readlines().AndReturn(['ac\n', 'ab\n'])
     self.mox.ReplayAll()
     self.encode._InitializeFullLogging('file')
-    self.assertEqual(self.encode._log_full_index, ['ac', 'ab'])
+    self.assertEqual(self.encode._log_full_index, {'ac': True, 'ab': True})
     self.mox.VerifyAll()
 
   def testInitializeFullLoggingRemoveDuplicates(self):
@@ -412,7 +412,7 @@ class EncodeDvdInitalizeFullLoggingTest(BaseEncodeDvdTest):
     self.mock_log_file.readlines().AndReturn(['ac\n', 'ab\n', 'ab\n'])
     self.mox.ReplayAll()
     self.encode._InitializeFullLogging('file')
-    self.assertEqual(self.encode._log_full_index, ['ac', 'ab'])
+    self.assertEqual(self.encode._log_full_index, {'ac': True, 'ab': True})
     self.mox.VerifyAll()
 
   def testInitializeFullLoggingError(self):
@@ -545,249 +545,259 @@ class EncodeDvdProcessArguementsTest(BaseEncodeDvdTest):
     self.mox.VerifyAll()
 
 
-# class EncodeDvdTest(unittest.TestCase):
-#   """Basic setup for testing encode_dvd methods."""
-#
-#   def setUp(self):
-#     self.mox = mox.Mox()
-#     self.options = MockOptions()
-#     setattr(self.options, 'chapter_start', 1)
-#     setattr(self.options, 'chapter_end', 2)
-#     setattr(self.options, 'title', 1)
-#     setattr(self.options, 'destination', '/tmp/')
-#     setattr(self.options, 'time', 120)
-#     setattr(self.options, 'ignore', False)
-#     self.encode = encode_dvd.EncodeDvd()
-#     self.encode.silent = True
-#     self.encode._log = MockLogger()
-#     self.encode._log_full = self.mox.CreateMockAnything()
-#     self.encode.parser = MockParser()
-#     self.encode.config = self.mox.CreateMock(encode_dvd.EncodeDvdConfigParser)
-#     self.mox.StubOutWithMock(self.encode, 'dvd_containers')
-#     self.mox.StubOutWithMock(self.encode, '__del__')
-#     self.mox.StubOutWithMock(self.encode, 'handbrake')
-#     self.encode.mail = encode_dvd.Mail()
-#
-#   def tearDown(self):
-#     self.mox.UnsetStubs()
-#
-#   def testGenerateSources(self):
-#     """Verifies a source list is generated properly."""
-#     self.encode._log_full_index = ['ab', 'ac']
-#     self.encode.dvd_containers.sources = ['af']
-#     self.encode.dvd_containers.GenerateDvdContainers('path')
-#     self.mox.ReplayAll()
-#     self.encode._GenerateSources('path')
-#     self.mox.VerifyAll()
-#
-#   def testLog(self):
-#     """Verifies the _Log method works properly."""
-#     self.encode.silent = True
-#     self.encode._Log('you should not see this', True)
-#     self.encode._Log('you should not see this')
-#
-#   def testGenerateDvdTitleList(self):
-#     """Verifies _GenerateDvdTitleList works properly."""
-#     self.encode.dvd_containers.sources = ['dvd_path']
-#     self.encode.handbrake.dvd = dvd.Dvd('test', [dvd.Title()])
-#     self.encode.dvd_containers.GenerateDvdContainers('path')
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('dvd_path')
-#     self.mox.ReplayAll()
-#     self.encode._GenerateDvdTitleList('path')
-#     self.mox.VerifyAll()
-#
-#   def testGenerateDvdTitleListBadConnect(self):
-#     """Verifies _GenerateDvdTitleList fails properly on bad connect."""
-#     self.encode.dvd_containers.GenerateDvdContainers('path')
-#     self.encode.handbrake.Connect().AndRaise(encode_dvd.handbrake.Error)
-#     self.mox.ReplayAll()
-#     self.assertRaises(encode_dvd.HandbrakeError,
-#                       self.encode._GenerateDvdTitleList,
-#                       'path')
-#     self.mox.VerifyAll()
-#
-#   def testGenerateDvdTitleListBadDvdInformation(self):
-#     """Verifies _GenerateDvdTitleList fails properly on bad dvd information."""
-#     self.encode.dvd_containers.sources = ['dvd_path']
-#     self.encode.dvd_containers.GenerateDvdContainers('path')
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('dvd_path').AndRaise(
-#         encode_dvd.handbrake.Error)
-#     self.mox.ReplayAll()
-#     self.assertRaises(encode_dvd.HandbrakeError,
-#                       self.encode._GenerateDvdTitleList,
-#                       'path')
-#     self.mox.VerifyAll()
-#
-#   def testProcessCustomTitles(self):
-#     """Verifies valid custom titles are processed correctly."""
-#     title = dvd.Title()
-#     title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
-#     self.encode.handbrake.options = (
-#         encode_dvd.handbrake.handbrake_options.Options())
-#     self.encode.handbrake.options.file_format.value = 'mp4'
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my')
-#     self.encode.handbrake.Encode(
-#         '/my', '/tmp/DVD [Title 1] [Chapters 1-2].mp4', 1, 1, 2).AndReturn(
-#             (True, datetime.timedelta(0, 10, 464765), 'DVD', []))
-#     self.mox.ReplayAll()
-#     self.encode._ProcessCustomTitles(self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessCustomTitlesWithIgnore(self):
-#     """Verifies valid custom titles are processed correctly with ignore."""
-#     self.options.ignore = True
-#     self.options.chapter_start = 3
-#     self.options.chapter_end = 4
-#     title = dvd.Title()
-#     title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
-#     self.encode.handbrake.options = (
-#         encode_dvd.handbrake.handbrake_options.Options())
-#     self.encode.handbrake.options.file_format.value = 'mp4'
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my')
-#     self.encode.handbrake.Encode(
-#         '/my', '/tmp/DVD [Title 1] [Chapters 3-4].mp4', 1, 3, 4).AndReturn(
-#             (True, datetime.timedelta(0, 10, 464765), 'DVD', []))
-#     self.mox.ReplayAll()
-#     self.encode._ProcessCustomTitles(self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessCustomTitlesBadConnect(self):
-#     """Verifies _ProcessCustomTitles fails properly on bad connect."""
-#     self.encode.handbrake.Connect().AndRaise(encode_dvd.handbrake.Error)
-#     self.mox.ReplayAll()
-#     self.assertRaises(encode_dvd.HandbrakeError,
-#                       self.encode._ProcessCustomTitles,
-#                       self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessCustomTitlesBadDvdInformation(self):
-#     """Verifies _ProcessCustomTitles fails properly on bad dvd information."""
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD')
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my').AndRaise(
-#         encode_dvd.handbrake.Error)
-#     self.mox.ReplayAll()
-#     self.assertRaises(encode_dvd.HandbrakeError,
-#                       self.encode._ProcessCustomTitles,
-#                       self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessCustomTitlesBadTitle(self):
-#     """Verifies a bad title fails properly."""
-#     setattr(self.options, 'title', 3)
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD')
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my')
-#     self.mox.ReplayAll()
-#     self.encode._ProcessCustomTitles(self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessCustomTitlesBadStart(self):
-#     """Verifies a bad title chapter start fails properly."""
-#     setattr(self.options, 'chapter_start', 5)
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD')
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my')
-#     self.mox.ReplayAll()
-#     self.encode._ProcessCustomTitles(self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessCustomTitlesBadEnd(self):
-#     """Verifies a bad title chapter end fails properly."""
-#     setattr(self.options, 'chapter_end', 5)
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD')
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my')
-#     self.mox.ReplayAll()
-#     self.encode._ProcessCustomTitles(self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessCustomTitlesBadEncode(self):
-#     """Verifies a bad title encode fails properly."""
-#     title = dvd.Title()
-#     title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
-#     self.encode.handbrake.options = (
-#         encode_dvd.handbrake.handbrake_options.Options())
-#     self.encode.handbrake.options.file_format.value = 'mp4'
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my')
-#     self.encode.handbrake.Encode(
-#         '/my', '/tmp/DVD [Title 1] [Chapters 1-2].mp4', 1, 1, 2).AndRaise(
-#             encode_dvd.handbrake.Error)
-#     self.mox.ReplayAll()
-#     self.assertRaises(encode_dvd.HandbrakeError,
-#                       self.encode._ProcessCustomTitles,
-#                       self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessTitles(self):
-#     """Verifies _ProcessTitles works properly."""
-#     title = dvd.Title()
-#     title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
-#     self.encode.handbrake.options = (
-#         encode_dvd.handbrake.handbrake_options.Options())
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my')
-#     self.encode.handbrake.EncodeAll(
-#         '/my', '/tmp/', datetime.datetime(1, 1, 1, 0, 2, 0)).AndReturn(
-#             [(True, datetime.timedelta(0, 10, 464765), 'DVD', [])])
-#     self.encode._log_full.write('/my\n')
-#     self.mox.ReplayAll()
-#     self.encode._ProcessTitles(self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessTitlesBadConnect(self):
-#     """Verifies _ProcessTitles fails properly with bad connect."""
-#     self.encode.handbrake.Connect().AndRaise(encode_dvd.handbrake.Error)
-#     self.mox.ReplayAll()
-#     self.assertRaises(encode_dvd.HandbrakeError,
-#                       self.encode._ProcessTitles, self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessTitlesBadDvdInformation(self):
-#     """Verifies _ProcessTitles fails properly with bad DVD Information."""
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my').AndRaise(
-#         encode_dvd.handbrake.Error)
-#     self.mox.ReplayAll()
-#     self.assertRaises(encode_dvd.HandbrakeError,
-#                       self.encode._ProcessTitles, self.options)
-#     self.mox.VerifyAll()
-#
-#   def testProcessTitlesBadEncode(self):
-#     """Verifies _ProcessTitles fails properly for bad encode."""
-#     title = dvd.Title()
-#     title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
-#     self.encode.dvd_containers.sources = ['/my']
-#     self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
-#     self.encode.handbrake.options = (
-#         encode_dvd.handbrake.handbrake_options.Options())
-#     self.encode.handbrake.Connect()
-#     self.encode.handbrake.GetDvdInformation('/my')
-#     self.encode.handbrake.EncodeAll(
-#         '/my', '/tmp/', datetime.datetime(1, 1, 1, 0, 2, 0)).AndRaise(
-#             encode_dvd.handbrake.Error)
-#     self.mox.ReplayAll()
-#     self.assertRaises(encode_dvd.HandbrakeError,
-#                       self.encode._ProcessTitles, self.options)
-#     self.mox.VerifyAll()
+class EncodeDvdTest(unittest.TestCase):
+  """Basic setup for testing encode_dvd methods."""
+
+  def setUp(self):
+    self.mox = mox.Mox()
+    self.options = MockOptions()
+    setattr(self.options, 'chapter_start', 1)
+    setattr(self.options, 'chapter_end', 2)
+    setattr(self.options, 'title', 1)
+    setattr(self.options, 'destination', '/tmp/')
+    setattr(self.options, 'time', 120)
+    setattr(self.options, 'ignore', False)
+    self.encode = encode_dvd.EncodeDvd()
+    self.encode.silent = True
+    self.encode._log = MockLogger()
+    self.encode._log_full = self.mox.CreateMockAnything()
+    self.encode.parser = MockParser()
+    self.encode.config = self.mox.CreateMock(encode_dvd.EncodeDvdConfigParser)
+    self.mox.StubOutWithMock(self.encode, 'dvd_containers')
+    self.mox.StubOutWithMock(self.encode, '__del__')
+    self.mox.StubOutWithMock(self.encode, 'handbrake')
+    self.encode.mail = encode_dvd.Mail()
+
+  def tearDown(self):
+    self.mox.UnsetStubs()
+
+  def testGenerateValidSources(self):
+    """Verifies a source list is generated properly."""
+    self.encode._log_full_index = {'ab': True, 'ac': True}
+    self.encode.dvd_containers.sources = ['af']
+    self.encode.dvd_containers.GenerateDvdContainers('path')
+    self.mox.ReplayAll()
+    self.encode._GenerateValidSources('path')
+    self.mox.VerifyAll()
+
+  def testGenerateValidSourcesWithDeletes(self):
+    """Verifies source list is generated with pre-processed titles removed."""
+    self.encode._log_full_index = {'ab': True, 'ac': True}
+    self.encode.dvd_containers.sources = ['af', 'ac']
+    self.encode.dvd_containers.GenerateDvdContainers('path')
+    self.mox.ReplayAll()
+    self.encode._GenerateValidSources('path')
+    self.assertEqual(self.encode.sources, ['af'])
+    self.mox.VerifyAll()
+
+  def testLog(self):
+    """Verifies the _Log method works properly."""
+    self.encode.silent = True
+    self.encode._Log('you should not see this', True)
+    self.encode._Log('you should not see this')
+
+  def testGenerateDvdTitleList(self):
+    """Verifies _GenerateDvdTitleList works properly."""
+    self.encode.dvd_containers.sources = ['dvd_path']
+    self.encode.handbrake.dvd = dvd.Dvd('test', [dvd.Title()])
+    self.encode.dvd_containers.GenerateDvdContainers('path')
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('dvd_path')
+    self.mox.ReplayAll()
+    self.encode._GenerateDvdTitleList('path')
+    self.mox.VerifyAll()
+
+  def testGenerateDvdTitleListBadConnect(self):
+    """Verifies _GenerateDvdTitleList fails properly on bad connect."""
+    self.encode.dvd_containers.GenerateDvdContainers('path')
+    self.encode.handbrake.Connect().AndRaise(encode_dvd.handbrake.Error)
+    self.mox.ReplayAll()
+    self.assertRaises(encode_dvd.HandbrakeError,
+                      self.encode._GenerateDvdTitleList,
+                      'path')
+    self.mox.VerifyAll()
+
+  def testGenerateDvdTitleListBadDvdInformation(self):
+    """Verifies _GenerateDvdTitleList fails properly on bad dvd information."""
+    self.encode.dvd_containers.sources = ['dvd_path']
+    self.encode.dvd_containers.GenerateDvdContainers('path')
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('dvd_path').AndRaise(
+        encode_dvd.handbrake.Error)
+    self.mox.ReplayAll()
+    self.assertRaises(encode_dvd.HandbrakeError,
+                      self.encode._GenerateDvdTitleList,
+                      'path')
+    self.mox.VerifyAll()
+
+  def testProcessCustomTitles(self):
+    """Verifies valid custom titles are processed correctly."""
+    title = dvd.Title()
+    title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
+    self.encode.dvd_containers.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
+    self.encode.handbrake.options = (
+        encode_dvd.handbrake.handbrake_options.Options())
+    self.encode.handbrake.options.file_format.value = 'mp4'
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my')
+    self.encode.handbrake.Encode(
+        '/my', '/tmp/DVD [Title 1] [Chapters 1-2].mp4', 1, 1, 2).AndReturn(
+            (True, datetime.timedelta(0, 10, 464765), 'DVD', []))
+    self.mox.ReplayAll()
+    self.encode._ProcessCustomTitles(self.options)
+    self.mox.VerifyAll()
+
+  def testProcessCustomTitlesWithIgnore(self):
+    """Verifies valid custom titles are processed correctly with ignore."""
+    self.options.ignore = True
+    self.options.chapter_start = 3
+    self.options.chapter_end = 4
+    title = dvd.Title()
+    title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
+    self.encode.dvd_containers.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
+    self.encode.handbrake.options = (
+        encode_dvd.handbrake.handbrake_options.Options())
+    self.encode.handbrake.options.file_format.value = 'mp4'
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my')
+    self.encode.handbrake.Encode(
+        '/my', '/tmp/DVD [Title 1] [Chapters 3-4].mp4', 1, 3, 4).AndReturn(
+            (True, datetime.timedelta(0, 10, 464765), 'DVD', []))
+    self.mox.ReplayAll()
+    self.encode._ProcessCustomTitles(self.options)
+    self.mox.VerifyAll()
+
+  def testProcessCustomTitlesBadConnect(self):
+    """Verifies _ProcessCustomTitles fails properly on bad connect."""
+    self.encode.handbrake.Connect().AndRaise(encode_dvd.handbrake.Error)
+    self.mox.ReplayAll()
+    self.assertRaises(encode_dvd.HandbrakeError,
+                      self.encode._ProcessCustomTitles,
+                      self.options)
+    self.mox.VerifyAll()
+
+  def testProcessCustomTitlesBadDvdInformation(self):
+    """Verifies _ProcessCustomTitles fails properly on bad dvd information."""
+    self.encode.dvd_containers.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD')
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my').AndRaise(
+        encode_dvd.handbrake.Error)
+    self.mox.ReplayAll()
+    self.assertRaises(encode_dvd.HandbrakeError,
+                      self.encode._ProcessCustomTitles,
+                      self.options)
+    self.mox.VerifyAll()
+
+  def testProcessCustomTitlesBadTitle(self):
+    """Verifies a bad title fails properly."""
+    setattr(self.options, 'title', 3)
+    self.encode.dvd_containers.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD')
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my')
+    self.mox.ReplayAll()
+    self.encode._ProcessCustomTitles(self.options)
+    self.mox.VerifyAll()
+
+  def testProcessCustomTitlesBadStart(self):
+    """Verifies a bad title chapter start fails properly."""
+    setattr(self.options, 'chapter_start', 5)
+    self.encode.dvd_containers.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD')
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my')
+    self.mox.ReplayAll()
+    self.encode._ProcessCustomTitles(self.options)
+    self.mox.VerifyAll()
+
+  def testProcessCustomTitlesBadEnd(self):
+    """Verifies a bad title chapter end fails properly."""
+    setattr(self.options, 'chapter_end', 5)
+    self.encode.dvd_containers.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD')
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my')
+    self.mox.ReplayAll()
+    self.encode._ProcessCustomTitles(self.options)
+    self.mox.VerifyAll()
+
+  def testProcessCustomTitlesBadEncode(self):
+    """Verifies a bad title encode fails properly."""
+    title = dvd.Title()
+    title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
+    self.encode.dvd_containers.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
+    self.encode.handbrake.options = (
+        encode_dvd.handbrake.handbrake_options.Options())
+    self.encode.handbrake.options.file_format.value = 'mp4'
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my')
+    self.encode.handbrake.Encode(
+        '/my', '/tmp/DVD [Title 1] [Chapters 1-2].mp4', 1, 1, 2).AndRaise(
+            encode_dvd.handbrake.Error)
+    self.mox.ReplayAll()
+    self.assertRaises(encode_dvd.HandbrakeError,
+                      self.encode._ProcessCustomTitles,
+                      self.options)
+    self.mox.VerifyAll()
+
+  def testProcessTitles(self):
+    """Verifies _ProcessTitles works properly."""
+    title = dvd.Title()
+    title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
+    self.encode.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
+    self.encode.handbrake.options = (
+        encode_dvd.handbrake.handbrake_options.Options())
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my')
+    self.encode.handbrake.EncodeAll(
+        '/my', '/tmp/', datetime.datetime(1, 1, 1, 0, 2, 0)).AndReturn(
+            [(True, datetime.timedelta(0, 10, 464765), 'DVD', [])])
+    self.encode._log_full.write('/my\n')
+    self.mox.ReplayAll()
+    self.encode._ProcessTitles(self.options)
+    self.mox.VerifyAll()
+
+  def testProcessTitlesBadConnect(self):
+    """Verifies _ProcessTitles fails properly with bad connect."""
+    self.encode.handbrake.Connect().AndRaise(encode_dvd.handbrake.Error)
+    self.mox.ReplayAll()
+    self.assertRaises(encode_dvd.HandbrakeError,
+                      self.encode._ProcessTitles, self.options)
+    self.mox.VerifyAll()
+
+  def testProcessTitlesBadDvdInformation(self):
+    """Verifies _ProcessTitles fails properly with bad DVD Information."""
+    self.encode.sources = ['/my']
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my').AndRaise(
+        encode_dvd.handbrake.Error)
+    self.mox.ReplayAll()
+    self.assertRaises(encode_dvd.HandbrakeError,
+                      self.encode._ProcessTitles, self.options)
+    self.mox.VerifyAll()
+
+  def testProcessTitlesBadEncode(self):
+    """Verifies _ProcessTitles fails properly for bad encode."""
+    title = dvd.Title()
+    title.AddChapter(dvd.Chapter(number=1), dvd.Chapter(number=2))
+    self.encode.sources = ['/my']
+    self.encode.handbrake.dvd = dvd.Dvd('DVD', [title])
+    self.encode.handbrake.options = (
+        encode_dvd.handbrake.handbrake_options.Options())
+    self.encode.handbrake.Connect()
+    self.encode.handbrake.GetDvdInformation('/my')
+    self.encode.handbrake.EncodeAll(
+        '/my', '/tmp/', datetime.datetime(1, 1, 1, 0, 2, 0)).AndRaise(
+            encode_dvd.handbrake.Error)
+    self.mox.ReplayAll()
+    self.assertRaises(encode_dvd.HandbrakeError,
+                      self.encode._ProcessTitles, self.options)
+    self.mox.VerifyAll()
 
 
 if __name__ == '__main__':
