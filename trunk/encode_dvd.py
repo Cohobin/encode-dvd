@@ -32,7 +32,7 @@ module.
 """
 
 __author__ = 'Robert M. Pufky (robert.pufky@gmail.com)'
-__version__ = '1.0 (Build 42)'
+__version__ = '1.1'
 
 import ConfigParser
 import datetime
@@ -381,11 +381,11 @@ class DvdContainerGenerator(object):
     If logging is used, it will automatically remove DVD containers that have
     already been processed.
 
+    A list containing full paths of source directories to use for encoding is
+    stored in self.sources.
+
     Args:
       path: String path to the source directory to find containers.
-
-    Returns:
-      A list containing full paths of source directories to use for encoding.
     """
     self.sources = []
     os.path.walk(path, self._DvdFilter, self.sources)
@@ -433,12 +433,13 @@ class EncodeDvd(object):
   Attributes:
     _log: An instantiated file object for logging.
     _log_full: An instantiated file object for full file encodes.
-    _log_full_index: List containing in-memory unique list of fule file encodes.
+    _log_full_index: Dictionary containing in-memory list of full file encodes.
     parser: An instantiated EncodeDvdOptions parser object.
     config: An instantiated EncodeDvdConfigParser object.
     handbrake: handbrake.HandBrake object used for encoding.
     dvd_containers: An instantiated DvdContainerGenerator object to generate
       valid DVD Containers for a given source path.
+    sources: List containing valid non-processed sources to process.
     mail: An instantiated Mail object to send notification e-mails.
     silent: Boolean True to repress printing to screen.
   """
@@ -447,11 +448,12 @@ class EncodeDvd(object):
     """Initalizes EncodeDvd."""
     self._log = None
     self._log_full = None
-    self._log_full_index = []
+    self._log_full_index = {}
     self.parser = EncodeDvdOptions().parser
     self.config = EncodeDvdConfigParser()
     self.handbrake = None
     self.dvd_containers = DvdContainerGenerator()
+    self.sources = []
     self.mail = None
     self.silent = False
 
@@ -508,8 +510,7 @@ class EncodeDvd(object):
     self._log_full.seek(0)
     for encoded_dvd in self._log_full.readlines():
       encoded_dvd = encoded_dvd.strip()
-      if encoded_dvd not in self._log_full_index:
-        self._log_full_index.append(encoded_dvd)
+      self._log_full_index.setdefault(encoded_dvd, True)
 
   def _ProcessArguements(self):
     """Processes command line arguments and sets up internal variables.
@@ -562,22 +563,24 @@ class EncodeDvd(object):
         options.time = 120
     return options
 
-  def _GenerateSources(self, source_path):
+  def _GenerateValidSources(self, source_path):
     """Generates a list of valid sources found, and logs it.
+
+    A valid source is any non-processed full path to a DVD container.  Valid
+    sources are stored in self.sources.
 
     Args:
       source_path: String path to search for DVD containers.
-
-    Returns:
-      List containing full paths to DVD containers, one per element.
     """
+    self.sources = []
     self._log.info('Searching source directory %s (this may take a while) ...' %
                    source_path)
     self.dvd_containers.GenerateDvdContainers(source_path)
     self._log.info('VALID NON-PROCESSED SOURCES FOUND:')
     for source in self.dvd_containers.sources:
-      if source not in self._log_full_index:
+      if not self._log_full_index.get(source, False):
         self._log.info(source)
+        self.sources.append(source)
 
   def _GenerateDvdTitleList(self, source_path):
     """Generates a formatted list of all the title information for given Dvd's.
@@ -702,7 +705,7 @@ class EncodeDvd(object):
     except handbrake.Error, error:
       self._log.critical(error)
       raise HandbrakeError(error)
-    for dvd in self.dvd_containers.sources:
+    for dvd in self.sources:
       email_results = ['\n']
       try:
         self.handbrake.GetDvdInformation(dvd)
@@ -722,7 +725,7 @@ class EncodeDvd(object):
                                (title, str(execution_time).split('.')[0]))
           if dvd not in self._log_full_index:
             self._log_full.write('%s\n' % dvd)
-            self._log_full_index.append(dvd)
+            self._log_full_index.setdefault(dvd, True)
         else:
           email_results.append('Title %s failed to encode:' % title)
           email_results.extend(log)
@@ -737,7 +740,7 @@ class EncodeDvd(object):
     self._Log('Processing %s jobs Completed.' % len(overall_results))
     if overall_results:
       self.mail.SendMail(
-          'Encoding %s jobs finished.' % len(self.dvd_containers.sources),
+          'Encoding %s jobs finished.' % len(self.sources),
           '\n'.join(overall_results))
 
   def Execute(self):
@@ -752,7 +755,7 @@ class EncodeDvd(object):
     if options.list:
       self._GenerateDvdTitleList(options.source)
     else:
-      self._GenerateSources(options.source)
+      self._GenerateValidSources(options.source)
       if options.title:
         self._ProcessCustomTitles(options)
       else:
