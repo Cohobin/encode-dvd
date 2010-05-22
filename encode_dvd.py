@@ -11,10 +11,10 @@
 #
 # This program is distributed in the hope that it will be useful, but WITHOUT
 # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more 
+# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
 # details.
 #
-# You should have received a copy of the GNU General Public License along with 
+# You should have received a copy of the GNU General Public License along with
 # this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 # Place, Suite 330, Boston, MA 02111-1307 USA
 #
@@ -22,7 +22,7 @@
 #
 #  http://www.opensource.org/licenses/gpl-2.0.php
 #
-# Please contact me if you wish to use this in another product that you are 
+# Please contact me if you wish to use this in another product that you are
 # building (robert.pufky@gmail.com); or building to sell.
 #
 """Command line multiple dvd encoder.
@@ -100,7 +100,7 @@ class EncodeDvdOptions(object):
       Title: Source DVD Title encoded.
       Chapters: (optional) Chapters encoded for the Title.  Only used when
         encoding specific Chapters for a specific Title.
-      format: File format extension, which is determined by using the 
+      format: File format extension, which is determined by using the
         FILE_FORMAT option in encode_dvd.config or automatically by handbrake
         based on encoding settings.
 
@@ -111,7 +111,7 @@ class EncodeDvdOptions(object):
       with the --title option.  If you want to re-encode, delete DVD the line
       from this file.
     encode_dvd.log:
-      Log file containing detailed information on what encode DVD is or has done.
+      Log file containing detailed information on what encode DVD is doing.
       Generally used for tracking cronjob progress, or debugging encodes (Good
       for tracking down those DVD's that write all episodes as a single title.
       See --title, --chapter-start, --chapter-end options).
@@ -390,17 +390,6 @@ class DvdContainerGenerator(object):
     self.sources = []
     os.path.walk(path, self._DvdFilter, self.sources)
 
-  def RemoveDuplicates(self, dvd_list):
-    """Removes duplicate DVD containers in sources that appear in dvd_list.
-
-    Args:
-      dvd_list: List containing dvd containers already processed.
-    """
-    for processed_dvd in dvd_list:
-      processed_dvd = processed_dvd.strip()
-      if processed_dvd in self.sources:
-        self.sources.pop(self.sources.index(processed_dvd))
-
 
 class Mail(object):
   """Handles e-mailing notifications to users.
@@ -426,7 +415,7 @@ class Mail(object):
       body: String body of e-mail.  Must use UNIX newlines.
 
     Raises:
-      EmailError: If e-mail faield to be sent.
+      EmailError: If e-mail failed to be sent.
     """
     if self.address:
       try:
@@ -444,6 +433,7 @@ class EncodeDvd(object):
   Attributes:
     _log: An instantiated file object for logging.
     _log_full: An instantiated file object for full file encodes.
+    _log_full_index: List containing in-memory unique list of fule file encodes.
     parser: An instantiated EncodeDvdOptions parser object.
     config: An instantiated EncodeDvdConfigParser object.
     handbrake: handbrake.HandBrake object used for encoding.
@@ -457,6 +447,7 @@ class EncodeDvd(object):
     """Initalizes EncodeDvd."""
     self._log = None
     self._log_full = None
+    self._log_full_index = []
     self.parser = EncodeDvdOptions().parser
     self.config = EncodeDvdConfigParser()
     self.handbrake = None
@@ -497,6 +488,29 @@ class EncodeDvd(object):
       else:
         self._log.info(message)
 
+  def _InitializeFullLogging(self, full_log_file):
+    """Initializes full encodes log and internal list.
+
+    This should only be called in the _ProcessArguments method.
+
+    Args:
+      full_log_file: String log to open.
+
+    Raises:
+      OptionProcessError: If the log file specified is incorrect.
+    """
+    try:
+      self._log_full = file(full_log_file, 'a+')
+    except IOError, error:
+      message = 'Could not open %s! %s' % (full_log_file, error)
+      self._log.error(message)
+      raise OptionProcessError(message)
+    self._log_full.seek(0)
+    for encoded_dvd in self._log_full.readlines():
+      encoded_dvd = encoded_dvd.strip()
+      if encoded_dvd not in self._log_full_index:
+        self._log_full_index.append(encoded_dvd)
+
   def _ProcessArguements(self):
     """Processes command line arguments and sets up internal variables.
 
@@ -516,12 +530,7 @@ class EncodeDvd(object):
     options = self.parser.parse_args()[0]
     self.handbrake, full = self.config.ProcessConfig(options.config)
     self._log = logging.getLogger('EncodeDvd')
-    try:
-      self._log_full = file(full, 'a+')
-    except IOError, error:
-      message = 'Could not open %s! %s' % (full, error)
-      self._log.error(message)
-      raise OptionProcessError(message)
+    self._InitializeFullLogging(full)
 
     if not options.source:
       self._log.critical('Source (%s) is None.' % options.source)
@@ -565,11 +574,10 @@ class EncodeDvd(object):
     self._log.info('Searching source directory %s (this may take a while) ...' %
                    source_path)
     self.dvd_containers.GenerateDvdContainers(source_path)
-    self._log_full.seek(0)
-    self.dvd_containers.RemoveDuplicates(self._log_full.readlines())
     self._log.info('VALID NON-PROCESSED SOURCES FOUND:')
     for source in self.dvd_containers.sources:
-      self._log.info(source)
+      if source not in self._log_full_index:
+        self._log.info(source)
 
   def _GenerateDvdTitleList(self, source_path):
     """Generates a formatted list of all the title information for given Dvd's.
@@ -712,7 +720,9 @@ class EncodeDvd(object):
           total_time += execution_time
           email_results.append('Processed title %s successfully in %s.' %
                                (title, str(execution_time).split('.')[0]))
-          self._log_full.write('%s\n' % dvd)
+          if dvd not in self._log_full_index:
+            self._log_full.write('%s\n' % dvd)
+            self._log_full_index.append(dvd)
         else:
           email_results.append('Title %s failed to encode:' % title)
           email_results.extend(log)
