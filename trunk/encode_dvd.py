@@ -32,7 +32,7 @@ module.
 """
 
 __author__ = 'Robert M. Pufky (robert.pufky@gmail.com)'
-__version__ = '1.1'
+__version__ = '1.2'
 
 import ConfigParser
 import datetime
