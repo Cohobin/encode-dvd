@@ -1,0 +1,167 @@
+HandBrake 0.9.3 (2008112300) - http://handbrake.fr/
+2 CPUs detected
+Opening ROAD_TO_GUANTANAMO...
+Scanning title 2 of 20...
+Scanning title 2 of 20...
+Scanning title 5 of 20...
+Scanning title 11 of 20...
+Scanning title 12 of 20...
+Scanning title 13 of 20...
+Scanning title 13 of 20...
+Scanning title 15 of 20...
+Scanning title 15 of 20...
+Scanning title 16 of 20...
+Scanning title 16 of 20...
+Scanning title 17 of 20...
+Scanning title 18 of 20...
+Scanning title 18 of 20...
+Scanning title 19 of 20...
+Scanning title 20 of 20...
+Scanning title 20 of 20...
++ title 2:
+  + vts 2, ttn 1, cells 0->12 (1700307 blocks)
+  + duration: 01:35:22
+  + size: 720x480, aspect: 1.78, 23.976 fps
+  + autocrop: 0/2/2/4
+  + chapters:
+    + 1: cells 0->0, 111188 blocks, duration 00:06:50
+    + 2: cells 1->1, 193846 blocks, duration 00:11:13
+    + 3: cells 2->2, 59775 blocks, duration 00:03:21
+    + 4: cells 3->3, 148869 blocks, duration 00:07:53
+    + 5: cells 4->4, 177040 blocks, duration 00:09:33
+    + 6: cells 5->5, 219868 blocks, duration 00:12:19
+    + 7: cells 6->6, 87141 blocks, duration 00:04:59
+    + 8: cells 7->7, 122853 blocks, duration 00:06:08
+    + 9: cells 8->8, 243296 blocks, duration 00:12:34
+    + 10: cells 9->9, 78745 blocks, duration 00:04:27
+    + 11: cells 10->10, 111921 blocks, duration 00:06:20
+    + 12: cells 11->11, 145578 blocks, duration 00:09:45
+    + 13: cells 12->12, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+  + subtitle tracks:
+    + 1, English (iso639-2: eng)
+    + 2, English (iso639-2: eng)
++ title 5:
+  + vts 4, ttn 1, cells 0->0 (4204 blocks)
+  + duration: 00:00:14
+  + size: 720x480, aspect: 1.78, 29.970 fps
+  + autocrop: 0/2/0/2
+  + chapters:
+    + 2: cells 0->0, 4204 blocks, duration 00:00:14
+  + audio tracks:
+    + 1, Unknown (AC3) (5.1 ch), 48000Hz, 448000bps
+  + subtitle tracks:
++ title 11:
+  + vts 9, ttn 1, cells 0->1 (43395 blocks)
+  + duration: 00:02:17
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 58/60/2/0
+  + chapters:
+    + 1: cells 0->0, 43208 blocks, duration 00:02:17
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 12:
+  + vts 9, ttn 2, cells 0->1 (43395 blocks)
+  + duration: 00:02:17
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 58/60/2/0
+  + chapters:
+    + 1: cells 0->0, 43208 blocks, duration 00:02:17
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 13:
+  + vts 9, ttn 3, cells 0->1 (41954 blocks)
+  + duration: 00:02:09
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 56/60/2/2
+  + chapters:
+    + 1: cells 0->0, 41767 blocks, duration 00:02:09
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 14:
+  + vts 9, ttn 4, cells 0->1 (41954 blocks)
+  + duration: 00:02:09
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 56/60/2/2
+  + chapters:
+    + 1: cells 0->0, 41767 blocks, duration 00:02:09
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 15:
+  + vts 9, ttn 5, cells 0->1 (38337 blocks)
+  + duration: 00:02:10
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 66/66/2/2
+  + chapters:
+    + 1: cells 0->0, 38150 blocks, duration 00:02:10
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 16:
+  + vts 10, ttn 1, cells 0->1 (36741 blocks)
+  + duration: 00:01:54
+  + size: 720x480, aspect: 1.78, 29.970 fps
+  + autocrop: 0/0/6/4
+  + chapters:
+    + 1: cells 0->0, 36554 blocks, duration 00:01:54
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 17:
+  + vts 10, ttn 2, cells 0->1 (13893 blocks)
+  + duration: 00:00:44
+  + size: 720x480, aspect: 1.78, 29.970 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 1: cells 0->0, 13706 blocks, duration 00:00:44
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 18:
+  + vts 10, ttn 3, cells 0->1 (27471 blocks)
+  + duration: 00:01:58
+  + size: 720x480, aspect: 1.78, 29.970 fps
+  + autocrop: 0/2/0/0
+  + chapters:
+    + 1: cells 0->0, 27284 blocks, duration 00:01:58
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+  + combing detected, may be interlaced or telecined
++ title 19:
+  + vts 10, ttn 4, cells 0->1 (13625 blocks)
+  + duration: 00:00:44
+  + size: 720x480, aspect: 1.78, 29.970 fps
+  + autocrop: 0/2/0/0
+  + chapters:
+    + 1: cells 0->0, 13438 blocks, duration 00:00:44
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+  + combing detected, may be interlaced or telecined
++ title 20:
+  + vts 10, ttn 5, cells 0->1 (42372 blocks)
+  + duration: 00:02:14
+  + size: 720x480, aspect: 1.78, 29.970 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 1: cells 0->0, 42185 blocks, duration 00:02:14
+    + 2: cells 1->1, 187 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+HandBrake has exited.

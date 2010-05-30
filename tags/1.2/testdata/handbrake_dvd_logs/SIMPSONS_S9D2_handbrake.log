@@ -1,0 +1,224 @@
+HandBrake 0.9.3 (2008112300) - http://handbrake.fr/
+2 CPUs detected
+Opening SIMPSONS_S9D2...
+Scanning title 1 of 13...
+Scanning title 1 of 13...
+Scanning title 2 of 13...
+Scanning title 3 of 13...
+Scanning title 3 of 13...
+Scanning title 4 of 13...
+Scanning title 4 of 13...
+Scanning title 5 of 13...
+Scanning title 5 of 13...
+Scanning title 6 of 13...
+Scanning title 7 of 13...
+Scanning title 7 of 13...
+Scanning title 8 of 13...
+Scanning title 9 of 13...
+Scanning title 10 of 13...
+Scanning title 10 of 13...
++ title 1:
+  + vts 3, ttn 1, cells 0->8 (434926 blocks)
+  + duration: 00:22:49
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/6/4
+  + chapters:
+    + 1: cells 0->0, 8266 blocks, duration 00:00:26
+    + 2: cells 1->1, 76860 blocks, duration 00:03:57
+    + 3: cells 2->2, 99928 blocks, duration 00:05:01
+    + 4: cells 3->4, 106591 blocks, duration 00:05:39
+    + 5: cells 5->6, 124945 blocks, duration 00:06:50
+    + 6: cells 7->7, 18331 blocks, duration 00:00:56
+    + 7: cells 8->8, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+    + 2, Espanol (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 3, Francais (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 4, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Espanol (iso639-2: spa)
+    + 4, Francais (iso639-2: fra)
+    + 5, Unknown (iso639-2: und)
+    + 6, Unknown (iso639-2: und)
++ title 2:
+  + vts 3, ttn 2, cells 0->9 (431727 blocks)
+  + duration: 00:22:49
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/8/4
+  + chapters:
+    + 1: cells 0->0, 17171 blocks, duration 00:00:53
+    + 2: cells 1->1, 61531 blocks, duration 00:03:22
+    + 3: cells 2->3, 52575 blocks, duration 00:02:51
+    + 4: cells 4->6, 159217 blocks, duration 00:08:25
+    + 5: cells 7->7, 122086 blocks, duration 00:06:22
+    + 6: cells 8->8, 19142 blocks, duration 00:00:56
+    + 7: cells 9->9, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+    + 2, Espanol (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 3, Francais (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 4, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Espanol (iso639-2: spa)
+    + 4, Francais (iso639-2: fra)
+    + 5, Unknown (iso639-2: und)
+    + 6, Unknown (iso639-2: und)
++ title 3:
+  + vts 3, ttn 3, cells 0->6 (425155 blocks)
+  + duration: 00:22:49
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/8/4
+  + chapters:
+    + 1: cells 0->0, 10132 blocks, duration 00:00:32
+    + 2: cells 1->1, 81295 blocks, duration 00:04:19
+    + 3: cells 2->2, 60957 blocks, duration 00:03:20
+    + 4: cells 3->3, 124681 blocks, duration 00:06:43
+    + 5: cells 4->4, 128642 blocks, duration 00:06:52
+    + 6: cells 5->5, 19443 blocks, duration 00:01:02
+    + 7: cells 6->6, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+    + 2, Espanol (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 3, Francais (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 4, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Espanol (iso639-2: spa)
+    + 4, Francais (iso639-2: fra)
++ title 4:
+  + vts 3, ttn 4, cells 0->6 (443224 blocks)
+  + duration: 00:22:49
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/8/4
+  + chapters:
+    + 1: cells 0->0, 10497 blocks, duration 00:00:32
+    + 2: cells 1->1, 56682 blocks, duration 00:02:53
+    + 3: cells 2->2, 88660 blocks, duration 00:04:27
+    + 4: cells 3->3, 177431 blocks, duration 00:09:23
+    + 5: cells 4->4, 90854 blocks, duration 00:04:37
+    + 6: cells 5->5, 19095 blocks, duration 00:00:56
+    + 7: cells 6->6, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+    + 2, Espanol (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 3, Francais (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 4, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Espanol (iso639-2: spa)
+    + 4, Francais (iso639-2: fra)
++ title 5:
+  + vts 3, ttn 5, cells 0->6 (430130 blocks)
+  + duration: 00:22:48
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/10/6
+  + chapters:
+    + 1: cells 0->0, 8216 blocks, duration 00:00:25
+    + 2: cells 1->1, 73928 blocks, duration 00:04:07
+    + 3: cells 2->2, 100924 blocks, duration 00:05:25
+    + 4: cells 3->3, 108777 blocks, duration 00:05:48
+    + 5: cells 4->4, 120255 blocks, duration 00:06:05
+    + 6: cells 5->5, 18025 blocks, duration 00:00:56
+    + 7: cells 6->6, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+    + 2, Espanol (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 3, Francais (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 4, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Espanol (iso639-2: spa)
+    + 4, Francais (iso639-2: fra)
++ title 6:
+  + vts 3, ttn 6, cells 0->7 (461883 blocks)
+  + duration: 00:22:48
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/8/4
+  + chapters:
+    + 1: cells 0->0, 8709 blocks, duration 00:00:25
+    + 2: cells 1->1, 135900 blocks, duration 00:06:49
+    + 3: cells 2->3, 135678 blocks, duration 00:07:05
+    + 4: cells 4->4, 39512 blocks, duration 00:01:51
+    + 5: cells 5->5, 123180 blocks, duration 00:05:43
+    + 6: cells 6->6, 18899 blocks, duration 00:00:55
+    + 7: cells 7->7, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+    + 2, Espanol (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 3, Francais (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 4, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Espanol (iso639-2: spa)
+    + 4, Francais (iso639-2: fra)
+    + 5, Unknown (iso639-2: und)
+    + 6, Unknown (iso639-2: und)
++ title 7:
+  + vts 3, ttn 7, cells 0->8 (499871 blocks)
+  + duration: 00:22:49
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 0/0/8/6
+  + chapters:
+    + 1: cells 0->0, 11366 blocks, duration 00:00:36
+    + 2: cells 1->2, 60311 blocks, duration 00:02:41
+    + 3: cells 3->3, 92859 blocks, duration 00:04:14
+    + 4: cells 4->5, 194001 blocks, duration 00:08:54
+    + 5: cells 6->6, 122057 blocks, duration 00:05:30
+    + 6: cells 7->7, 19272 blocks, duration 00:00:54
+    + 7: cells 8->8, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+    + 2, Espanol (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 3, Francais (AC3) (2.0 ch), 48000Hz, 192000bps
+    + 4, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Espanol (iso639-2: spa)
+    + 4, Francais (iso639-2: fra)
+    + 5, Unknown (iso639-2: und)
+    + 6, Unknown (iso639-2: und)
++ title 8:
+  + vts 2, ttn 1, cells 0->1 (154952 blocks)
+  + duration: 00:08:38
+  + size: 720x480, aspect: 1.33, 29.970 fps
+  + autocrop: 0/0/10/4
+  + chapters:
+    + 1: cells 0->0, 154947 blocks, duration 00:08:38
+    + 2: cells 1->1, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 9:
+  + vts 4, ttn 1, cells 0->2 (8410 blocks)
+  + duration: 00:00:27
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/6/4
+  + chapters:
+    + 1: cells 0->0, 5001 blocks, duration 00:00:16
+    + 2: cells 1->1, 3404 blocks, duration 00:00:11
+    + 3: cells 2->2, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
++ title 10:
+  + vts 4, ttn 2, cells 0->2 (10398 blocks)
+  + duration: 00:00:32
+  + size: 720x480, aspect: 1.33, 23.976 fps
+  + autocrop: 0/0/4/4
+  + chapters:
+    + 1: cells 0->0, 3441 blocks, duration 00:00:10
+    + 2: cells 1->1, 6952 blocks, duration 00:00:22
+    + 3: cells 2->2, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+HandBrake has exited.
