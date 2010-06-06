@@ -1,0 +1,136 @@
+HandBrake 0.9.3 (2008112300) - http://handbrake.fr/
+2 CPUs detected
+Opening FIREFLY_D3...
+Scanning title 1 of 11...
+Scanning title 1 of 11...
+Scanning title 2 of 11...
+Scanning title 3 of 11...
+Scanning title 3 of 11...
+Scanning title 4 of 11...
+Scanning title 7 of 11...
++ title 1:
+  + vts 4, ttn 1, cells 0->14 (975743 blocks)
+  + duration: 00:43:55
+  + size: 720x480, aspect: 1.78, 23.976 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 1: cells 0->0, 58693 blocks, duration 00:02:51
+    + 2: cells 1->1, 20905 blocks, duration 00:00:52
+    + 3: cells 2->2, 99279 blocks, duration 00:04:15
+    + 4: cells 3->3, 107451 blocks, duration 00:04:28
+    + 5: cells 4->5, 92743 blocks, duration 00:04:16
+    + 6: cells 6->6, 114838 blocks, duration 00:05:14
+    + 7: cells 7->7, 75878 blocks, duration 00:03:31
+    + 8: cells 8->8, 95513 blocks, duration 00:04:11
+    + 9: cells 9->10, 106897 blocks, duration 00:04:37
+    + 10: cells 11->11, 111643 blocks, duration 00:04:26
+    + 11: cells 12->12, 85854 blocks, duration 00:04:34
+    + 12: cells 13->13, 6044 blocks, duration 00:00:38
+    + 13: cells 14->14, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 2, Francais (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 3, Espanol (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 4, English (AC3) (Director's Commentary 1) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Francais (Forced Caption) (iso639-2: fra)
+    + 4, Espanol (Forced Caption) (iso639-2: spa)
++ title 2:
+  + vts 7, ttn 1, cells 0->14 (922801 blocks)
+  + duration: 00:42:48
+  + size: 720x480, aspect: 1.78, 23.976 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 1: cells 0->0, 110641 blocks, duration 00:05:09
+    + 2: cells 1->1, 19796 blocks, duration 00:00:52
+    + 3: cells 2->2, 74386 blocks, duration 00:03:15
+    + 4: cells 3->3, 90594 blocks, duration 00:04:19
+    + 5: cells 4->5, 60081 blocks, duration 00:02:48
+    + 6: cells 6->6, 105706 blocks, duration 00:04:47
+    + 7: cells 7->7, 90757 blocks, duration 00:04:13
+    + 8: cells 8->8, 94806 blocks, duration 00:04:30
+    + 9: cells 9->10, 79840 blocks, duration 00:03:46
+    + 10: cells 11->11, 92315 blocks, duration 00:04:02
+    + 11: cells 12->12, 97991 blocks, duration 00:04:32
+    + 12: cells 13->13, 5883 blocks, duration 00:00:38
+    + 13: cells 14->14, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 2, Francais (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 3, Espanol (AC3) (Dolby Surround), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Francais (Forced Caption) (iso639-2: fra)
+    + 4, Espanol (Forced Caption) (iso639-2: spa)
++ title 3:
+  + vts 1, ttn 1, cells 0->14 (955738 blocks)
+  + duration: 00:42:53
+  + size: 720x480, aspect: 1.78, 23.976 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 1: cells 0->0, 69741 blocks, duration 00:03:15
+    + 2: cells 1->1, 20408 blocks, duration 00:00:52
+    + 3: cells 2->2, 110667 blocks, duration 00:04:48
+    + 4: cells 3->3, 93847 blocks, duration 00:04:22
+    + 5: cells 4->5, 71928 blocks, duration 00:03:19
+    + 6: cells 6->6, 105121 blocks, duration 00:04:42
+    + 7: cells 7->7, 74966 blocks, duration 00:03:22
+    + 8: cells 8->9, 111852 blocks, duration 00:04:54
+    + 9: cells 10->10, 77616 blocks, duration 00:03:42
+    + 10: cells 11->11, 119727 blocks, duration 00:05:09
+    + 11: cells 12->12, 93377 blocks, duration 00:03:51
+    + 12: cells 13->13, 6483 blocks, duration 00:00:38
+    + 13: cells 14->14, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 2, Francais (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 3, Espanol (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 4, English (AC3) (Director's Commentary 1) (2.0 ch), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Francais (Forced Caption) (iso639-2: fra)
+    + 4, Espanol (Forced Caption) (iso639-2: spa)
++ title 4:
+  + vts 8, ttn 1, cells 0->14 (944123 blocks)
+  + duration: 00:43:41
+  + size: 720x480, aspect: 1.78, 23.976 fps
+  + autocrop: 0/0/0/0
+  + chapters:
+    + 1: cells 0->0, 49548 blocks, duration 00:02:15
+    + 2: cells 1->1, 20341 blocks, duration 00:00:52
+    + 3: cells 2->2, 117515 blocks, duration 00:05:28
+    + 4: cells 3->3, 76559 blocks, duration 00:03:37
+    + 5: cells 4->5, 122980 blocks, duration 00:05:40
+    + 6: cells 6->6, 125367 blocks, duration 00:05:30
+    + 7: cells 7->7, 115918 blocks, duration 00:05:35
+    + 8: cells 8->9, 85140 blocks, duration 00:03:49
+    + 9: cells 10->10, 75709 blocks, duration 00:03:37
+    + 10: cells 11->11, 50821 blocks, duration 00:02:08
+    + 11: cells 12->12, 56207 blocks, duration 00:02:50
+    + 12: cells 13->13, 48013 blocks, duration 00:02:19
+    + 13: cells 14->14, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 2, Francais (AC3) (Dolby Surround), 48000Hz, 192000bps
+    + 3, Espanol (AC3) (Dolby Surround), 48000Hz, 192000bps
+  + subtitle tracks:
+    + 1, English (Closed Caption) (iso639-2: eng)
+    + 2, Espanol (iso639-2: spa)
+    + 3, Francais (Forced Caption) (iso639-2: fra)
+    + 4, Espanol (Forced Caption) (iso639-2: spa)
++ title 7:
+  + vts 5, ttn 1, cells 0->1 (4503 blocks)
+  + duration: 00:00:11
+  + size: 720x480, aspect: 1.78, 29.970 fps
+  + autocrop: 0/4/52/2
+  + chapters:
+    + 1: cells 0->0, 4498 blocks, duration 00:00:11
+    + 2: cells 1->1, 5 blocks, duration 00:00:00
+  + audio tracks:
+    + 1, English (AC3) (5.1 ch), 48000Hz, 448000bps
+  + subtitle tracks:
+HandBrake has exited.
