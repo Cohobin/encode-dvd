@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/python2.6
 #
 # Copyright 2009, Robert M. Pufky (robert.pufky@gmail.com)
 #
