@@ -1,4 +1,5 @@
 Encode DVD 1.2 by Robert M. Pufky (robert.pufky@gmail.com)
+With Python 2.6 support.
 05/30/2010
 
 Encode DVD was born from the need to encode lots of DVD's without the hassle of
@@ -15,13 +16,14 @@ Works on both Linux and OSX.
 
 Release Notes:
 --------------
+* Branch: Support for Python 2.6
 * Fixed issue 4: Re-running on DVD's already encoded sometimes re-encodes, with
   everything skipped
 * Fixed issue 3: Multiple lines for single DVD in full_encodes.log
 
 Requirements:
 -------------
-python 2.5
+python 2.6
 mox 0.5.1
 handbrakeCLI (0.9.3)
 
@@ -29,17 +31,17 @@ Basic Installation:
 -------------------
 1) create the following directories:
   sudo mkdir -p /etc/encode-dvd
-  sudo mkdir -p /opt/bin/encode-dvd/1.2
+  sudo mkdir -p /opt/bin/encode-dvd/1.2-2.6
   sudo mkdir -p /var/log/encode-dvd
 
 2) Move encode-dvd to source directory
-  mv * /opt/bin/encode-dvd/1.2/
+  mv * /opt/bin/encode-dvd/1.2-2.6/
 
 3) Copy the configuration file to /etc/encode-dvd
-  cp /opt/bin/encode-dvd/1.2/encode_dvd.config /etc/encode-dvd/
+  cp /opt/bin/encode-dvd/1.2-2.6/encode_dvd.config /etc/encode-dvd/
 
 4) symlink encode-dvd to /opt/bin
-  ln -s /opt/bin/encode-dvd/1.2/encode_dvd.py /opt/bin/encode-dvd 
+  ln -s /opt/bin/encode-dvd/1.2-2.6/encode_dvd.py /opt/bin/encode-dvd 
 
 5) Ensure your path contains /opt/bin
   PATH=$PATH:/opt/bin
