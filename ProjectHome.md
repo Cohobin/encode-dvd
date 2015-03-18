@@ -1,0 +1,3 @@
+This simplifies encoding of DVD's to high-quality video files; focusing on high-volume, automated processing.
+
+A user of this program may set their preferred options, and run this in the background, watching a directory for new DVD images.  When found, it will process those images, optionally sending an e-mail when the encode is finished.  This also allows for tweaking of encodes without having to re-specify all encoding options (i.e. hard-burning subtitles, or encoding just a specific chapter set).
